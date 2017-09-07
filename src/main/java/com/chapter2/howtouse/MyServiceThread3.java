@@ -2,9 +2,9 @@ package com.chapter2.howtouse;
 
 public class MyServiceThread3 implements Runnable {
 
-	private Myservice myservice;
+	private MyService myservice;
 
-	public MyServiceThread3(Myservice myservice) {
+	public MyServiceThread3(MyService myservice) {
 		this.myservice = myservice;
 	}
 

@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author tangj
  *
  */
-public class Myservice {
+public class MyService {
 
 	ReentrantLock lock = new ReentrantLock();
 

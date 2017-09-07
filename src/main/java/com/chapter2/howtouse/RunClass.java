@@ -3,7 +3,7 @@ package com.chapter2.howtouse;
 public class RunClass {
 
 	public static void main(String[] args) {
-		Myservice myservice = new Myservice();
+		MyService myservice = new MyService();
 		Runnable runnable1 = new MyServiceThread1(myservice);
 		Runnable runnable2 = new MyServiceThread2(myservice);
 		Runnable runnable3 = new MyServiceThread3(myservice);
