@@ -5,8 +5,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Service {
 
-	private static volatile int nextThread = 1;
-	private ReentrantLock lock = new ReentrantLock();
+	private static int nextThread = 1;
+	// 使用公平锁
+	private ReentrantLock lock = new ReentrantLock(true);
 	Condition conditionA = lock.newCondition();
 	Condition conditionB = lock.newCondition();
 	Condition conditionC = lock.newCondition();
@@ -21,7 +22,7 @@ public class Service {
 			/**
 			 * 由此可见 默认构造方法生成的是非公平锁
 			 */
-			System.err.println("是否是公平锁： "+lock.isFair());
+			System.err.println("是否是公平锁： " + lock.isFair());
 			nextThread = 2;
 			conditionB.signalAll();
 		} catch (InterruptedException e) {
