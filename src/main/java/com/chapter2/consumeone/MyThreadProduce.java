@@ -6,11 +6,11 @@ package com.chapter2.consumeone;
  * @author tangj
  *
  */
-public class MyThreadService1 implements Runnable {
+public class MyThreadProduce implements Runnable {
 
 	private Service service;
 
-	public MyThreadService1(Service service) {
+	public MyThreadProduce(Service service) {
 		this.service = service;
 	}
 

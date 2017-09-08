@@ -5,9 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Service {
 
+	// 通过nextThread控制下一个执行的线程
 	private static int nextThread = 1;
-	// 使用公平锁
-	private ReentrantLock lock = new ReentrantLock(true);
+	private ReentrantLock lock = new ReentrantLock();
+	// 有三个线程，所有注册三个Condition
 	Condition conditionA = lock.newCondition();
 	Condition conditionB = lock.newCondition();
 	Condition conditionC = lock.newCondition();
@@ -19,10 +20,6 @@ public class Service {
 				conditionA.await();
 			}
 			System.out.println(Thread.currentThread().getName() + " 工作");
-			/**
-			 * 由此可见 默认构造方法生成的是非公平锁
-			 */
-			System.err.println("是否是公平锁： " + lock.isFair());
 			nextThread = 2;
 			conditionB.signalAll();
 		} catch (InterruptedException e) {

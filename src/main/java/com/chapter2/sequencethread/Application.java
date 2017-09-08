@@ -47,8 +47,8 @@ public class Application {
 		Runnable B = getThreadB(service);
 		Runnable C = getThreadC(service);
 
-		new Thread(A, "A").start();
 		new Thread(B, "B").start();
+		new Thread(A, "A").start();
 		new Thread(C, "C").start();
 	}
 
