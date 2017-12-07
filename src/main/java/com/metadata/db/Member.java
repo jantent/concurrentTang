@@ -3,9 +3,9 @@ package com.metadata.db;
 @DBTable(name = "MEMBER")
 public class Member {
     @SQLString(30)
-    String firstName;
+    String firstName = "测试String";
     @SQLString(50)
-    String lastName;
+    String lastName = "这是last";
     @SQLInteger
     Integer age;
     @SQLString(value = 30,constraints = @Constraints(primaryKey = true))
