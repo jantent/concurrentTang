@@ -24,7 +24,7 @@ public class CachePool {
     }
 
     public static  void main(String args[]){
-        ExecutorService cachePool = Executors.newCachedThreadPool();
+        ExecutorService cachePool = Executors.newFixedThreadPool(5);
         for (int i=1;i<=10;i++){
             cachePool.execute(getThread(i));
         }

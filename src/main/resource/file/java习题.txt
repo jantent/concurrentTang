@@ -1,0 +1,97 @@
+1.HashMap  HashTable的区别
+HashTable底层是用HashMap实现的，与HashMap的区别是，HashTable是按存入顺序排序的，
+而HashMap不是。HashMap的原理是有一个大的table数组组成，每个数组元素是一个Entry。
+为了处理冲突，通常会将Entry用链表实现。
+
+HashMap和Hashtable都实现了Map接口，因此很多特性非常相似。但是，他们有以下不同点：
+
+HashMap允许键和值是null，而Hashtable不允许键或者值是null。
+
+Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。
+
+HashMap提供了可供应用迭代的键的集合，因此，HashMap是快速失败的。另一方面Hashtable提供了对键的列举(Enumeration)。一般认为Hashtable是一个遗留的类。
+
+2.ArrayList,LinkedList 和Vector的区别和实现原理。
+ArrayList是基于数组的可变长数组，因为这个特性，所以它更适合实现get和set；
+LinkedList是基于双向链表的，所以比较适合实现插入和删除等操作；但以上两个都是非线程安全的，
+Vector的实现和ArrayList差不多，改进的地方是使用synchronized实现了线程安全。
+
+3.ConcurrentHashMap实现原理
+一个ConcurrentHashMap由多个segment组成，每一个segment都包含了一个HashEntry数组的hashtable，
+每一个segment包含了对自己的hashtable的操作，比如get，put，replace等操作，
+这些操作发生的时候，对自己的hashtable进行锁定。由于每一个segment写操作只锁定自己的hashtable，
+所以可能存在多个线程同时写的情况，性能无疑好于只有一个hashtable锁定的情况。
+
+4.String和StringBuffer,StringBuilder区别和联系，String为啥不可变，在内存中的具体形态。
+String：字符串常量，字符串长度不可变。\
+StringBuffer：字符串变量（Synchronized，即线程安全）。
+如果要频繁对字符串内容进行修改，出于效率考虑最好使用StringBuffer，
+如果想转成String类型，可以调用StringBuffer的toString()方法。
+StringBuilder：字符串变量（非线程安全）。在内部，StringBuilder对象被当作是一个包含字符序列的变长数组。
+StringBuilder与StringBuffer有公共父类AbstractStringBuilder(抽象类)。
+
+
+5.Http协议相关。
+HTTP 是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，
+主要规定了客户端和服务器之间的通信格式，默认使用80端口。
+
+HTTP/1.0不支持连接保持，所以后来HTTP/1.1增加了Connection:keep-alive以及管道，
+管道机制则是允许浏览器同时发出A请求和B请求，但是服务器还是按照顺序。
+
+HTTP/2.0是一个彻底的二进制协议；实现双向的、实时的通信（多工），
+避免了队头阻塞；用ID来区分数据流，客户端发出的数据流，ID一律为奇数，
+服务器发出的，ID为偶数；可以取消数据流；客户端还可以指定数据流的优先级。
+优先级越高，服务器就会越早回应；引入了头信息压缩机制和信息表；允许服务器未经请求，主动向客户端发送资源，这叫做服务器推送；
+
+6讲解下你对抽象，多态的理解；
+
+抽象就是将实际事物特征抽象出来，用一个类表示，类中的属性就表示事物的不同特征。
+
+抽象类和接口就是抽象的一种表象。
+
+多态
+
+①使用父类类型的引用指向子类的对象；
+
+②该引用只能调用父类中定义的方法，不能调用子类中独有的方法；
+
+③如果子类中重写了父类中的一个方法，那么在调用该方法的时候，将会调用子类中的这个方法；
+
+④在多态中，子类可以调用父类中的所有方法；
+
+⑤多态主要体现为方法重载和方法重写，相同的行为，不同的实现方式；
+
+⑥多态的主要应用是多态参数和多态集合
+
+⑦如果一个方法中有父类作为参数类型，就意味着可以给该方法传递任何一个子类对象。
+
+
+JDK7新特性：
+
+1，switch中可以使用字串了
+
+2，"<>"这个玩意儿的运用List<String> tempList = new ArrayList<>(); 即泛型实例化类型自动推断
+
+3. 自定义自动关闭类
+
+4. 新增一些取环境信息的工具方法
+
+5. Boolean类型反转，空指针安全,参与位运算
+
+6. 两个char间的equals
+
+7，安全的加减乘除
+
+8.数值可加下划线
+
+例如：int one_million = 1_000_000;
+
+9.支持二进制文字
+
+例如：int binary = 0b1001_1001;
+
+10、在try catch异常扑捉中，一个catch可以写多个异常类型，用"|"隔开
+
+11、jdk7之前，你必须用try{}finally{}在try内使用资源，在finally中关闭资源，
+不管try中的代码是否正常退出或者异常退出。jdk7之后，你可以不必要写finally语句来关闭资源，只要你在try()的括号内部定义要使用的资源。
+
