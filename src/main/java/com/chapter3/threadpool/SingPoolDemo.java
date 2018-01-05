@@ -19,11 +19,12 @@ public class SingPoolDemo {
         };
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws InterruptedException {
         ExecutorService singPool = Executors.newSingleThreadExecutor();
         for (int i=0;i<10;i++){
             singPool.execute(getThread(i));
         }
-        singPool.shutdown();
+        Thread.sleep(3000);
+        System.exit(-1);
     }
 }
