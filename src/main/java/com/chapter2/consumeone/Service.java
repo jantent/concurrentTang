@@ -9,11 +9,10 @@ public class Service {
 	private Lock lock = new ReentrantLock();
 	private boolean flag = false;
 	private Condition condition = lock.newCondition();
-	// ÒÔ´ËÎªºâÁ¿±êÖ¾
 	private int number = 1;
 
 	/**
-	 * Éú²úÕßÉú²ú
+	 * ç”Ÿäº§è€…ç”Ÿäº§
 	 */
 	public void produce() {
 		try {
@@ -21,12 +20,12 @@ public class Service {
 			while (flag == true) {
 				condition.await();
 			}
-			System.out.println(Thread.currentThread().getName() + "-----Éú²ú-----");
+			System.out.println(Thread.currentThread().getName() + "-----ç”Ÿäº§-----");
 			number++;
 			System.out.println("number: " + number);
 			System.out.println();
 			flag = true;
-			// ÌáĞÑÏû·ÑÕßÏû·Ñ
+			// æé†’æ¶ˆè´¹è€…æ¶ˆè´¹
 			condition.signalAll();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -36,7 +35,7 @@ public class Service {
 	}
 
 	/**
-	 * Ïû·ÑÕßÏû·ÑÉú²úµÄÎïÆ·
+	 * æ¶ˆè´¹è€…æ¶ˆè´¹
 	 */
 	public void consume() {
 		try {
@@ -44,12 +43,12 @@ public class Service {
 			while (flag == false) {
 				condition.await();
 			}
-			System.out.println(Thread.currentThread().getName() + "-----Ïû·Ñ-----");
+			System.out.println(Thread.currentThread().getName() + "-----æ¶ˆè´¹-----");
 			number--;
 			System.out.println("number: " + number);
 			System.out.println();
 			flag = false;
-			// ÌáĞÑÉú²úÕßÉú²ú
+			//æé†’ç”Ÿäº§è€…ç”Ÿäº§
 			condition.signalAll();
 		} catch (InterruptedException e) {
 			e.printStackTrace();

@@ -10,13 +10,10 @@ public class ApplicationCondition {
 		new Thread(runnable1, "a").start();
 		new Thread(runnable2, "b").start();
 		
-		// 线程sleep2秒钟
 		Thread.sleep(2000);
-		// 唤醒所有持有conditionA的线程
 		service.signallA();
 		
 		Thread.sleep(2000);
-		// 唤醒所有持有conditionB的线程
 		service.signallB();
 	}
 

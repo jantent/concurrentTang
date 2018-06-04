@@ -1,7 +1,6 @@
 package com.chapter2.sequencethread;
 
 /**
- * 线程按顺序执行
  * 
  * @author tangj
  *

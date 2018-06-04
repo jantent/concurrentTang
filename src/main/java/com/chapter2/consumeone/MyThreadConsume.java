@@ -1,7 +1,6 @@
 package com.chapter2.consumeone;
 
 /**
- * 消费者线程
  * 
  * @author tangj
  *

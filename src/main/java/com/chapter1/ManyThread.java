@@ -1,7 +1,7 @@
 package com.chapter1;
 
 /**
- * 多个线程实例
+ *
  * 
  * @author tangj
  *
@@ -20,15 +20,12 @@ public class ManyThread {
 class MyRunnable2 implements Runnable {
 
 	int count = 0;
-
-	// 注意在这里增加了关键字 synchronized
 	@Override
 	synchronized public void run() {
 		autoIncrement();
-		System.out.println(Thread.currentThread().getName() + "计算了" + "count:" + count);
+		System.out.println(Thread.currentThread().getName()  + "count:" + count);
 	}
 
-	// 执行自增操作
 	private void autoIncrement() {
 		count++;
 	}

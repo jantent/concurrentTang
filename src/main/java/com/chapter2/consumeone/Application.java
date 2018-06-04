@@ -6,8 +6,8 @@ public class Application {
 		Service service = new Service();
 		Runnable produce = new MyThreadProduce(service);
 		Runnable consume = new MyThreadConsume(service);
-		new Thread(produce, "Éú²úÕß  ").start();
-		new Thread(consume, "Ïû·ÑÕß  ").start();
+		new Thread(produce, "ç”Ÿäº§è€…å¯åŠ¨").start();
+		new Thread(consume, "æ¶ˆè´¹è€…å¯åŠ¨").start();
 	}
 
 }

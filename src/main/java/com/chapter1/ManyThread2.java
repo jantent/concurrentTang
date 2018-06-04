@@ -17,16 +17,15 @@ public class ManyThread2 {
 class MyRunnable3 implements Runnable{
 	
 	int count = 0;
-	// 使用重入锁ReentrantLock
+
 	Lock lock = new ReentrantLock();
 	
 	@Override
 	public void run() {
-		// 锁住
 		lock.lock();
 		count++;
-		System.out.println(Thread.currentThread().getName() + "计算了" + "count:" + count);
-		// 解锁
+		System.out.println(Thread.currentThread().getName()  + "count:" + count);
+
 		lock.unlock();
 	}
 	

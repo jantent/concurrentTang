@@ -5,10 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Service {
 
-	// 通过nextThread控制下一个执行的线程
+
 	private static int nextThread = 1;
 	private ReentrantLock lock = new ReentrantLock();
-	// 有三个线程，所有注册三个Condition
+
 	Condition conditionA = lock.newCondition();
 	Condition conditionB = lock.newCondition();
 	Condition conditionC = lock.newCondition();
@@ -19,7 +19,7 @@ public class Service {
 			while (nextThread != 1) {
 				conditionA.await();
 			}
-			System.out.println(Thread.currentThread().getName() + " 工作");
+			System.out.println(Thread.currentThread().getName() + "鎵ц");
 			nextThread = 2;
 			conditionB.signalAll();
 		} catch (InterruptedException e) {
@@ -35,7 +35,7 @@ public class Service {
 			while (nextThread != 2) {
 				conditionB.await();
 			}
-			System.out.println(Thread.currentThread().getName() + " 工作");
+			System.out.println(Thread.currentThread().getName() + " 鎵ц");
 			nextThread = 3;
 			conditionC.signalAll();
 		} catch (InterruptedException e) {
@@ -51,7 +51,7 @@ public class Service {
 			while (nextThread != 3) {
 				conditionC.await();
 			}
-			System.out.println(Thread.currentThread().getName() + " 工作");
+			System.out.println(Thread.currentThread().getName() + "鎵ц");
 			nextThread = 1;
 			conditionA.signalAll();
 		} catch (InterruptedException e) {
